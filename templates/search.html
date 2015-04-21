@@ -14,12 +14,12 @@
         <input type="submit" value="Search">
     </form>
     <br>
-{% if query %}
+{% if users %}
 <h2>Results for "{{ query|escape }}":</h2>
 {% if users %}
 <ul>
     {% for user in users %}
-    <li> {{ user.name }} {{ user.nikname }}</li>
+    <li> {{ user.name }} <br> {{ user.nikname }}</li> <br>
     {% endfor %}
 </ul>
 {% else %}

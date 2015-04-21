@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response
 from django.db.models import Q
 from models import *
-
+from django import forms
 
 def index(request):
     p = Publisher(name = 'Zhenya', surename = 'Orlov', city = 'Kiev')
@@ -13,13 +13,13 @@ def index(request):
 
 
 def search(request):
+    #Search works only for word's part, not only for complete
     query = request.GET.get('q', '')
     if query:
         qset = (
-            Q(name__icontains=query) # contains - case sensetive, icontaines case insensetive
+            Q(name__icontains=query) # contains - case sensitive, icontains case insensitive
         )
         results = User.objects.filter(qset).distinct()
-        #results = results#Note
     else:
         results = []
     return render_to_response('search.html', {"query": query, "users": results})
@@ -33,3 +33,10 @@ def add(request):
 
 def home(request):
     return render_to_response('home.html ')
+
+
+def delete(request):
+
+    query = request.GET.get()
+    users = User.objects.all()
+    return render_to_response('delete.html', {'users': users})
