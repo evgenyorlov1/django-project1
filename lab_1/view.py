@@ -8,7 +8,7 @@ def index(request):
     p.save()
     b=User(name = 'Zhenya', nikname = 'Zen', email = 'evgenyorlov1@gmail.com')
     b.save()
-    users = User.objects.all()
+    users = User.objects.all() #Note .all()
     return render_to_response('index.html', {'users': users})
 
 
@@ -16,12 +16,13 @@ def search(request):
     query = request.GET.get('q', '')
     if query:
         qset = (
-            Q(name__icontains=query)
+            Q(name__icontains=query) # contains - case sensetive, icontaines case insensetive
         )
         results = User.objects.filter(qset).distinct()
+        #results = results#Note
     else:
         results = []
-    return render_to_response('search.html', {"query": query, "results": results})
+    return render_to_response('search.html', {"query": query, "users": results})
 
 
 def add(request):

@@ -16,14 +16,14 @@
     <br>
 {% if query %}
 <h2>Results for "{{ query|escape }}":</h2>
-{% if reluts %}
+{% if users %}
 <ul>
-    {% for i in results %}
-    <li> {{ i|escape }}</li>
+    {% for user in users %}
+    <li> {{ user.name }} {{ user.nikname }}</li>
     {% endfor %}
 </ul>
 {% else %}
-<p> No results found </p>
+    <p> No results found </p>
 {% endif %}
 {% endif %}
 </body>

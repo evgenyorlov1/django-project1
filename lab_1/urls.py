@@ -8,7 +8,7 @@ urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^index/', 'lab_1.view.index'),
-    url(r'^input/', 'lab_1.view.search'),
+    url(r'^search/', 'lab_1.view.search'),
     url(r'^add/', 'lab_1.view.add'),
     url(r'^home/', 'lab_1.view.home'),
 
