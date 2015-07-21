@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Add</title>
+</head>
+<body>
+<h1>Add information:</h1>
+<br>
+    <form action="." method="get">
+        <label for="q">Enter user's name</label>
+        <br>
+        <input type="text" name="name" value="{{ query|escape }}">
+        <br>
+        <label for="w">Enter user's nikname</label>
+        <br>
+        <input type="text" name="nikname" value="{{ query|escape }}">
+        <br>
+        <input type="submit" value="Save">
+    </form>
+
+{% if request %}
+    <p>Information was added </p>
+{% else %}
+    <p>Information wasn't added </p>
+{% endif %}
+</body>
+</html>
